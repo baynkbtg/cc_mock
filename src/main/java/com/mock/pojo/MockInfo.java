@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 public class MockInfo implements Serializable {
     private Long id;
-    private String name;
+    private String alias;
     private String proto;
     private String domain;
     private String url;
-    private String expectation;
+    private String json;
     private String fileName;
 
     public Long getId() {
@@ -30,12 +30,12 @@ public class MockInfo implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public String getProto() {
@@ -62,12 +62,12 @@ public class MockInfo implements Serializable {
         this.url = url;
     }
 
-    public String getExpectation() {
-        return expectation;
+    public String getJson() {
+        return json;
     }
 
-    public void setExpectation(String expectation) {
-        this.expectation = expectation;
+    public void setJson(String expectation) {
+        this.json = json;
     }
 }
 
