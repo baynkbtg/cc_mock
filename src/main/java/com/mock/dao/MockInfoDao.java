@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * Created by qilong.chen on 2017/3/19.
  */
@@ -14,6 +16,8 @@ public interface MockInfoDao {
             @Result(property = "proto", column = "proto"), @Result(property = "status", column = "status"),
             @Result(property = "domain", column = "domain"), @Result(property = "url", column = "url"),
             @Result(property = "json", column = "json"), @Result(property = "fileName", column = "filename") })
+
+    List<MockInfo> query();
 
     void insert(MockInfo mockInfo);
 

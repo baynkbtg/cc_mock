@@ -12,9 +12,18 @@ public class MockInfo implements Serializable {
     private String domain;
     private String url;
     private String expectation;
+    private String fileName;
 
     public Long getId() {
         return id;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public void setId(Long id) {
