@@ -4,9 +4,9 @@
 
     <insert id="insert">
         INSERT INTO
-        mock_info(id,proto,domain,url,expectation)
+        mock_info(id,alias,proto,domain,path,json)
         VALUES
-        (#{id},#{proto},#{domain},#{url},#{expectation})
+        (#{id},#{alias},#{proto},#{domain},#{path},#{json})
     </insert>
 
 </mapper>

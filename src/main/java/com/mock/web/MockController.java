@@ -3,7 +3,6 @@ package com.mock.web;
 import com.mock.dto.BaseResult;
 import com.mock.pojo.MockInfo;
 import com.mock.service.MockService;
-import com.mock.util.ResolveURL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.ws.rs.Produces;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by qilong.chen on 2018/3/20.
@@ -34,16 +34,18 @@ public class MockController {
             @RequestParam(value = "url", required = false) String url,
             @RequestParam(value = "json") String json) throws IOException {
         //解析URL
-        String proto = ResolveURL.read(url).get("proto");
-        String domain = ResolveURL.read(url).get("domain");
-        String context = ResolveURL.read(url).get("context");
+        URL urlobj = new URL(url);
+        String proto = urlobj.getProtocol();
+        String domain = urlobj.getHost();
+        String path = urlobj.getPath();
+        String query = urlobj.getQuery();
 
         //向JavaBean注入属性值
         MockInfo mockInfo = new MockInfo();
         mockInfo.setAlias(alias);
         mockInfo.setProto(proto);
         mockInfo.setDomain(domain);
-        mockInfo.setUrl(context);
+        mockInfo.setPath(path);
 
         mockInfo.setJson(json);
 

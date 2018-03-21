@@ -10,20 +10,11 @@ public class MockInfo implements Serializable {
     private String alias;
     private String proto;
     private String domain;
-    private String url;
+    private String path;
     private String json;
-    private String fileName;
 
     public Long getId() {
         return id;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
     }
 
     public void setId(Long id) {
@@ -54,19 +45,19 @@ public class MockInfo implements Serializable {
         this.domain = domain;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getJson() {
         return json;
     }
 
-    public void setJson(String expectation) {
+    public void setJson(String json) {
         this.json = json;
     }
 }

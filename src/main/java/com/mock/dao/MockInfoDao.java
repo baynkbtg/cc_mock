@@ -13,9 +13,8 @@ import java.util.List;
 public interface MockInfoDao {
     @Select(value = "select * from mock_info")
     @Results(value = { @Result(id = true, property = "id", column = "id"), @Result(property = "alias", column = "alias"),
-            @Result(property = "proto", column = "proto"), @Result(property = "status", column = "status"),
-            @Result(property = "domain", column = "domain"), @Result(property = "url", column = "url"),
-            @Result(property = "json", column = "json"), @Result(property = "fileName", column = "filename") })
+            @Result(property = "proto", column = "proto"), @Result(property = "domain", column = "domain"),
+            @Result(property = "url", column = "url"), @Result(property = "json", column = "json") })
 
     List<MockInfo> query();
 
