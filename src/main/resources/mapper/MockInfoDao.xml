@@ -9,4 +9,11 @@
         (#{id},#{alias},#{proto},#{domain},#{path},#{json})
     </insert>
 
+    <select id="queryByPath" resultType="String">
+        SELECT *
+        FROM mock_info
+        WHERE path like concat(concat('%',#{path}),'%')
+        ORDER BY id DESC
+    </select>
+
 </mapper>

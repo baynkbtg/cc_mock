@@ -1,6 +1,7 @@
 package com.mock.dao;
 
 import com.mock.pojo.MockInfo;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -17,6 +18,8 @@ public interface MockInfoDao {
             @Result(property = "path", column = "path"), @Result(property = "json", column = "json") })
 
     List<MockInfo> query();
+
+    String queryByPath(@Param("path") String path);
 
     void insert(MockInfo mockInfo);
 

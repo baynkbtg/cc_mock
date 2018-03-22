@@ -11,6 +11,8 @@ public interface MockService {
 
     List<MockInfo> query();
 
+    String queryByPath(String path);
+
     void insert(MockInfo mockInfo);
 
     void update(MockInfo mockInfo);

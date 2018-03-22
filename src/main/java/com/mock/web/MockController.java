@@ -28,7 +28,7 @@ public class MockController {
 
     @ResponseBody
     @Produces("application/json;charset=UTF-8")
-    @RequestMapping(value = "execute")
+    @RequestMapping(value = "insert")
     public BaseResult<Object> execute(
             @RequestParam(value = "alias", required = false) String alias,
             @RequestParam(value = "url", required = false) String url,
@@ -55,6 +55,13 @@ public class MockController {
         } catch (Exception e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "queryByUrl")
+    public String queryByUrl(@RequestParam(value = "path") String path) {
+        String expectation = mockService.queryByPath(path);
+        return expectation;
     }
 
 }
