@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Produces;
 import java.io.IOException;
 import java.net.URL;
@@ -58,10 +61,34 @@ public class MockController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "queryByUrl")
-    public String queryByUrl(@RequestParam(value = "path") String path) {
-        String expectation = mockService.queryByPath(path);
-        return expectation;
+        @RequestMapping(value = "queryByPath")
+//    public String queryByUrl(@RequestParam(value = "path") String path) {
+//        String expectation = mockService.queryByPath(path);
+//        return expectation;
+//    }
+
+    public void queryByPath(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+//        return "success!";
+
+//        return request;
+//        String requestUrl =request.getRequestURL().toString();
+//        return requestUrl;
+        String queryString = request.getQueryString();
+        String requestURI = request.getRequestURI();
+
+        String requestURL = request.getRequestURL().toString();
+
+        // 全路径 什么都有的那种
+        String fullPath = requestURL + "?" + queryString;
+
+
+        System.out.println("参数部分:" + queryString);
+        System.out.println("请求uri:" + requestURI);
+        System.out.println("请求url:" + requestURL);
+        System.out.println("全路径:" + fullPath);
+
     }
+
 
 }
