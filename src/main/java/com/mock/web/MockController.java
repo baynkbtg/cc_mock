@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Produces;
 import java.io.IOException;
 import java.net.URL;
@@ -60,35 +59,20 @@ public class MockController {
         }
     }
 
-    @ResponseBody
-        @RequestMapping(value = "queryByPath")
-//    public String queryByUrl(@RequestParam(value = "path") String path) {
-//        String expectation = mockService.queryByPath(path);
-//        return expectation;
-//    }
+//    @ResponseBody
+    @RequestMapping(value = "queryByPath")
+    public void queryByPath(HttpServletRequest request,
+            @RequestParam(value = "path", required = false) String path) throws ServletException, IOException {
 
-    public void queryByPath(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
-//        return "success!";
+        //获取传入的参数，里面包含有被mock接口的查询参数
+        String getQueryString =request.getQueryString();
+        System.out.println("getQueryString:"+ getQueryString);
 
-//        return request;
-//        String requestUrl =request.getRequestURL().toString();
-//        return requestUrl;
-        String queryString = request.getQueryString();
-        String requestURI = request.getRequestURI();
-
-        String requestURL = request.getRequestURL().toString();
-
-        // 全路径 什么都有的那种
-        String fullPath = requestURL + "?" + queryString;
-
-
-        System.out.println("参数部分:" + queryString);
-        System.out.println("请求uri:" + requestURI);
-        System.out.println("请求url:" + requestURL);
-        System.out.println("全路径:" + fullPath);
+        //根据被mock接口的uri匹配并返回期望
+//        String expected=this.mockService.queryByPath(path);
+//        JSONObject jsonExpected = JSONObject.parseObject(expected);
+//        return jsonExpected;
 
     }
-
 
 }

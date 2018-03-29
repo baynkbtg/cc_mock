@@ -10,7 +10,7 @@
     </insert>
 
     <select id="queryByPath" resultType="String">
-        SELECT *
+        SELECT json
         FROM mock_info
         WHERE path like concat(concat('%',#{path}),'%')
         ORDER BY id DESC
