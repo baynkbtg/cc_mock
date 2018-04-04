@@ -33,7 +33,6 @@
 </head>
 
 <body class="gray-bg">
-
 <div class="wrapper wrapper-content  animated fadeInRight">
     <div class="row">
         <div class="col-sm-12">
@@ -43,15 +42,24 @@
                 </div>
                 <div class="ibox-content">
                     <div class="form-group" style="margin: 50px 10px 20px 5px;">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="此处填写接口mock的名称" style="display: block" id="alias"/>
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="此处填写接口mock的名称" style="display: block" id="alias"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                    <input class="form-control" placeholder="标识字段名称" style="display: block" id="iden_key"/>
+                            </div>
+                            <div class="col-sm-2">
+                                    <input class="form-control" placeholder="标识字段值" style="display: block" id="iden_val"/>
+                            </div>
                         </div>
                         <br>
-
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="此处填写想要mock的接口URL" id="url">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" id="confirm">确认添加</button>
+                                <button type="button" class="btn btn-primary" id="confirm">确认添加/更新</button>
                             </span>
                         </div>
                     </div>
@@ -100,7 +108,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- JSON 染色与格式化 -->
 <script src="<%=path%>/resource/js/plugins/jsoncheck/jquery.json.js"></script>
@@ -204,12 +211,15 @@
     $("#confirm").click(function () {
         var alias = document.getElementById("alias").value;
         var url = document.getElementById("url").value;
+        var iden_key = document.getElementById("iden_key").value;
+        var iden_val = document.getElementById("iden_val").value;
+        var identity = iden_key:iden_val;
         var json = current_json_str;//压缩后的JSON
 
         $.ajax({
             url: "<%=path%>/mock/insert",
             data: {
-                alias: alias, url: url, json: json
+                alias: alias, url: url, json: json, identity: identity
             },
             type: "post",
             async: false,
