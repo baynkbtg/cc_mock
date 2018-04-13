@@ -19,7 +19,7 @@ public interface MockInfoDao {
 
     List<MockInfo> query();
 
-    String queryByPath(@Param("path") String path);
+    MockInfo queryByPath(@Param("path") String path);
 
     void insert(MockInfo mockInfo);
 

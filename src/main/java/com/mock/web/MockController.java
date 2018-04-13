@@ -36,18 +36,14 @@ public class MockController {
     public BaseResult<Object> execute(
             @RequestParam(value = "alias", required = false) String alias,
             @RequestParam(value = "url", required = false) String url,
-            @RequestParam(value = "identity", required = false) String identity,
+            @RequestParam(value = "idenKey", required = false) String idenKey,
+            @RequestParam(value = "idenVal", required = false) String idenVal,
             @RequestParam(value = "json") String json) throws IOException {
         //解析URL
         URL urlobj = new URL(url);
         String proto = urlobj.getProtocol();
         String domain = urlobj.getHost();
         String path = urlobj.getPath();
-
-        //解析前端传来的标识
-        String[] kv = identity.split(":");
-        JSONObject iden = new JSONObject();
-        iden.put(kv[0], kv[1]);
 
         //向JavaBean注入属性值
         MockInfo mockInfo = new MockInfo();
@@ -56,7 +52,8 @@ public class MockController {
         mockInfo.setDomain(domain);
         mockInfo.setPath(path);
         mockInfo.setJson(json);
-        mockInfo.setIden(iden.toString());
+        mockInfo.setIdenKey(idenKey);
+        mockInfo.setIdenVal(idenVal);
 
         try {
             mockService.insert(mockInfo);
@@ -75,16 +72,33 @@ public class MockController {
 //        String getQueryString =request.getQueryString();
 //        System.out.println("getQueryString:"+ getQueryString);
 
-        Enumeration enu=request.getParameterNames();
-        while(enu.hasMoreElements()){
-            String paraName=(String)enu.nextElement();
-            System.out.println(paraName+": "+request.getParameter(paraName));
-        }
+//        Enumeration enu=request.getParameterNames();
+//        while(enu.hasMoreElements()){
+//            String paraName=(String)enu.nextElement();
+//            System.out.println(paraName+": "+request.getParameter(paraName));
+//        }
+//        System.out.println(request.getParameter("orderNo"));
 
+        JSONObject jsonExpected = new JSONObject();
 
         //根据被mock接口的uri匹配并返回期望
-        String expected=this.mockService.queryByPath(path);
-        JSONObject jsonExpected = JSONObject.parseObject(expected);
+        MockInfo mockInfo=this.mockService.queryByPath(path);
+        String idenKey = mockInfo.getIdenKey();
+        String idenVal = mockInfo.getIdenVal();
+        if(idenKey != null){
+            Enumeration enu=request.getParameterNames();
+            while(enu.hasMoreElements()){
+                String paraName=(String)enu.nextElement();
+                if(paraName.equals(idenKey)){
+                    String reqVal = request.getParameter(paraName);
+                    if(reqVal.equals(idenVal)){
+                        jsonExpected = JSONObject.parseObject(mockInfo.getJson());
+                    }
+                }
+            }
+        }
+
+//        JSONObject jsonExpected = JSONObject.parseObject(expected);
         return jsonExpected;
 
     }

@@ -12,6 +12,8 @@ public class MockInfo implements Serializable {
     private String domain;
     private String path;
     private String json;
+    private String idenkey;
+    private String idenval;
 
     public Long getId() {
         return id;
@@ -59,6 +61,22 @@ public class MockInfo implements Serializable {
 
     public void setJson(String json) {
         this.json = json;
+    }
+
+    public String getIdenKey() {
+        return idenkey;
+    }
+
+    public void setIdenKey(String idenkey) {
+        this.idenkey = idenkey;
+    }
+
+    public String getIdenVal() {
+        return idenval;
+    }
+
+    public void setIdenVal(String iden_val) {
+        this.idenval = idenval;
     }
 }
 

@@ -23,7 +23,7 @@ public class MockServiceImpl implements MockService {
     }
 
     @Override
-    public String queryByPath(String path) {
+    public MockInfo queryByPath(String path) {
         return this.mockInfoDao.queryByPath(path);
     }
 

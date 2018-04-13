@@ -211,15 +211,14 @@
     $("#confirm").click(function () {
         var alias = document.getElementById("alias").value;
         var url = document.getElementById("url").value;
-        var iden_key = document.getElementById("iden_key").value;
-        var iden_val = document.getElementById("iden_val").value;
-        var identity = iden_key:iden_val;
+        var iden_key = document.getElementById("idenKey").value;
+        var iden_val = document.getElementById("idenVal").value;
         var json = current_json_str;//压缩后的JSON
 
         $.ajax({
             url: "<%=path%>/mock/insert",
             data: {
-                alias: alias, url: url, json: json, identity: identity
+                alias: alias, url: url, json: json, iden_key: iden_key, iden_val: iden_val
             },
             type: "post",
             async: false,

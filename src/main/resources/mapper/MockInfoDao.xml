@@ -4,13 +4,13 @@
 
     <insert id="insert">
         INSERT INTO
-        mock_info(id,alias,proto,domain,path,json)
+        mock_info(id,alias,proto,domain,path,json,idenkey,idenval)
         VALUES
-        (#{id},#{alias},#{proto},#{domain},#{path},#{json})
+        (#{id},#{alias},#{proto},#{domain},#{path},#{json},#{idenkey},#{idenval})
     </insert>
 
-    <select id="queryByPath" resultType="String">
-        SELECT json
+    <select id="queryByPath" resultType="com.mock.pojo.MockInfo">
+        SELECT *
         FROM mock_info
         WHERE path like concat(concat('%',#{path}),'%')
         ORDER BY id DESC
