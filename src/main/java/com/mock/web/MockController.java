@@ -56,8 +56,13 @@ public class MockController {
         mockInfo.setIdenVal(idenVal);
 
         try {
-            mockService.insert(mockInfo);
-            return new BaseResult<Object>(true, "成功添加一条记录！");
+            MockInfo isMockExist=this.mockService.queryByPath(path);
+            if(isMockExist == null){
+                mockService.insert(mockInfo);
+                return new BaseResult<Object>(true, "成功添加一条记录！");
+            } else {
+                return new BaseResult<Object>(false, "mock已存在，如需修改请移步编辑区");
+            }
         } catch (Exception e) {
             return new BaseResult<Object>(false, e.getMessage());
         }
