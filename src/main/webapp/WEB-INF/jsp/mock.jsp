@@ -59,7 +59,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="此处填写想要mock的接口URL" id="url">
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-primary" id="confirm">确认添加/更新</button>
+                                <button type="button" class="btn btn-primary" id="confirm">确认添加</button>
                             </span>
                         </div>
                     </div>
