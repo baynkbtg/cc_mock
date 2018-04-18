@@ -49,10 +49,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                    <input class="form-control" placeholder="标识字段名称" style="display: block" id="iden_key"/>
+                                    <input class="form-control" placeholder="标识字段名称" style="display: block" id="idenKey"/>
                             </div>
                             <div class="col-sm-2">
-                                    <input class="form-control" placeholder="标识字段值" style="display: block" id="iden_val"/>
+                                    <input class="form-control" placeholder="标识字段值" style="display: block" id="idenVal"/>
                             </div>
                         </div>
                         <br>
@@ -211,14 +211,14 @@
     $("#confirm").click(function () {
         var alias = document.getElementById("alias").value;
         var url = document.getElementById("url").value;
-        var iden_key = document.getElementById("idenKey").value;
-        var iden_val = document.getElementById("idenVal").value;
+        var idenKey = document.getElementById("idenKey").value;
+        var idenVal = document.getElementById("idenVal").value;
         var json = current_json_str;//压缩后的JSON
 
         $.ajax({
             url: "<%=path%>/mock/insert",
             data: {
-                alias: alias, url: url, json: json, iden_key: iden_key, iden_val: iden_val
+                alias: alias, url: url, json: json, idenKey: idenKey, idenVal: idenVal
             },
             type: "post",
             async: false,

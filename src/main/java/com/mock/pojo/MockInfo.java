@@ -67,16 +67,16 @@ public class MockInfo implements Serializable {
         return idenkey;
     }
 
-    public void setIdenKey(String idenkey) {
-        this.idenkey = idenkey;
+    public void setIdenKey(String idenKey) {
+        this.idenkey = idenKey;
     }
 
     public String getIdenVal() {
         return idenval;
     }
 
-    public void setIdenVal(String iden_val) {
-        this.idenval = idenval;
+    public void setIdenVal(String idenVal) {
+        this.idenval = idenVal;
     }
 }
 

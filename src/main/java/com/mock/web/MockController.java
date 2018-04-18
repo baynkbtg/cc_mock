@@ -85,7 +85,7 @@ public class MockController {
         MockInfo mockInfo=this.mockService.queryByPath(path);
         String idenKey = mockInfo.getIdenKey();
         String idenVal = mockInfo.getIdenVal();
-        if(idenKey != null){
+        if(!(idenKey == null || idenKey =="")){
             Enumeration enu=request.getParameterNames();
             while(enu.hasMoreElements()){
                 String paraName=(String)enu.nextElement();
@@ -96,9 +96,10 @@ public class MockController {
                     }
                 }
             }
+            return jsonExpected;
         }
 
-//        JSONObject jsonExpected = JSONObject.parseObject(expected);
+        jsonExpected = JSONObject.parseObject(mockInfo.getJson());
         return jsonExpected;
 
     }
