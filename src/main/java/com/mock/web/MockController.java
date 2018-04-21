@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.mock.dto.BaseResult;
 import com.mock.pojo.MockInfo;
 import com.mock.service.MockService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +23,7 @@ import java.util.Enumeration;
 @Controller
 @RequestMapping(value = "mock")
 public class MockController {
-    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+//    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private MockService mockService;
@@ -61,7 +59,7 @@ public class MockController {
                 mockService.insert(mockInfo);
                 return new BaseResult<Object>(true, "成功添加一条记录！");
             } else {
-                return new BaseResult<Object>(false, "mock已存在，如需修改请移步编辑区");
+                return new BaseResult<Object>(false, "mock已存在");
             }
         } catch (Exception e) {
             return new BaseResult<Object>(false, e.getMessage());
@@ -90,7 +88,7 @@ public class MockController {
         MockInfo mockInfo=this.mockService.queryByPath(path);
         String idenKey = mockInfo.getIdenKey();
         String idenVal = mockInfo.getIdenVal();
-        if(!(idenKey == null || idenKey =="")){
+        if(!(idenKey == null || "".equals(idenKey))){
             Enumeration enu=request.getParameterNames();
             while(enu.hasMoreElements()){
                 String paraName=(String)enu.nextElement();
