@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="mock:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="mock_1.0_20180421.war">
+    <root id="archive" name="mock_1.0_20180425.war">
       <element id="artifact" artifact-name="mock:war exploded" />
     </root>
   </artifact>
