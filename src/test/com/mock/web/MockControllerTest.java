@@ -8,7 +8,7 @@ import org.junit.After;
 * MockController Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>三月 20, 2018</pre> 
+* @since <pre>三月 21, 2018</pre> 
 * @version 1.0 
 */ 
 public class MockControllerTest { 
@@ -23,21 +23,11 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: execute(@RequestParam(value = "name", required = false) String name, @RequestParam(value = "url", required = false) String url, @RequestParam(value = "expectation") String expectation) 
+* Method: execute(@RequestParam(value = "alias", required = false) String alias, @RequestParam(value = "url", required = false) String url, @RequestParam(value = "json") String json) 
 * 
 */ 
 @Test
 public void testExecute() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
-* Method: insert(@RequestParam(value = "proto") String proto, @RequestParam(value = "domain") String domain, @RequestParam(value = "url") String url, @RequestParam(value = "expectation") String expectation) 
-* 
-*/ 
-@Test
-public void testInsert() throws Exception { 
 //TODO: Test goes here... 
 } 
 
