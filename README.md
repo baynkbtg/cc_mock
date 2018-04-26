@@ -1,15 +1,10 @@
 #### ***文中链接各位根据自己项目对应修改***
 --------------------------------------------------------------------------------
 #### **项目管理**：
-#### *PMO*:(http://pmo.corp.qunar.com)<br />
+#### *PMO*:(http://pmo.corp.qunar.com/browse/DZS-23580)<br />
 --------------------------------------------------------------------------------
 #### **CI/CD**:
-#### *QDR*:(http://qdr.corp.qunar.com/)<br />　tffy待wbv待创建　
-
---------------------------------------------------------------------------------
-#### **质量管理**:
-#### *bugfree*:(http://svn.corp.qunar.com/bugfree)<br />
-#### *case*:(http://bugfree.corp.qunar.com/bugfree/index.php/case)<br />
+#### *QDR*:(http://qdr.corp.qunar.com/)<br />　待创建　
 --------------------------------------------------------------------------------
 #### **项目信息**:
-#### *wiki*:(http://wiki.corp.qunar.com/)<br />
+#### *wiki*:(http://wiki.corp.qunar.com/confluence/pages/viewpage.action?pageId=192855280)<br />
