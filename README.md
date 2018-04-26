@@ -4,9 +4,7 @@
 #### *PMO*:(http://pmo.corp.qunar.com)<br />
 --------------------------------------------------------------------------------
 #### **CI/CD**:
-#### *QDR*:(http://qdr.corp.qunar.com/)<br />
-#### *QCI*:(http://qci.corp.qunar.com/)<br />
-#### *CABLE*:(http://wanshiwu.corp.qunar.com/qualitycheck/index/)<br />
+#### *QDR*:(http://qdr.corp.qunar.com/)<br />　tffy待wbv待创建　
 
 --------------------------------------------------------------------------------
 #### **质量管理**:
