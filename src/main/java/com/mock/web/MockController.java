@@ -69,7 +69,8 @@ public class MockController {
     @ResponseBody
     @RequestMapping(value = "queryByPath")
     public JSONObject queryByPath(HttpServletRequest request,
-            @RequestParam(value = "path", required = false) String path) throws ServletException, IOException {
+            @RequestParam(value = "path", required = false) String path,
+                                  @RequestParam(value = "mname", required = false) String mname) throws ServletException, IOException {
 
         //获取传入的参数，里面包含有被mock接口的查询参数
 //        String getQueryString =request.getQueryString();
