@@ -14,6 +14,7 @@ public class MockInfo implements Serializable {
     private String json;
     private String idenkey;
     private String idenval;
+    private String method;
 
     public Long getId() {
         return id;
@@ -75,8 +76,14 @@ public class MockInfo implements Serializable {
         return idenval;
     }
 
-    public void setIdenVal(String idenVal) {
-        this.idenval = idenVal;
+    public void setIdenVal(String idenVal) {this.idenval = idenVal;}
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 }
 

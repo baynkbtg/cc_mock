@@ -36,25 +36,45 @@ public class MockController {
             @RequestParam(value = "url", required = false) String url,
             @RequestParam(value = "idenKey", required = false) String idenKey,
             @RequestParam(value = "idenVal", required = false) String idenVal,
-            @RequestParam(value = "json") String json) throws IOException {
-        //解析URL
-        URL urlobj = new URL(url);
-        String proto = urlobj.getProtocol();
-        String domain = urlobj.getHost();
-        String path = urlobj.getPath();
+            @RequestParam(value = "json", required = true) String json,
+            @RequestParam(value = "method", required = false) String method) throws IOException {
 
-        //向JavaBean注入属性值
         MockInfo mockInfo = new MockInfo();
         mockInfo.setAlias(alias);
+
+        int firSplit = url.indexOf(":");
+        String proto = url.substring(0, firSplit);
+        String path = "";
+
+        //根据接口协议做不同处理
+        if (proto.equals("http") || proto.equals("https")) {
+            URL urlobj = new URL(url);
+            proto = urlobj.getProtocol();
+            String domain = urlobj.getHost();
+            path = urlobj.getPath();
+            mockInfo.setDomain(domain);
+            mockInfo.setIdenKey(idenKey);
+            mockInfo.setIdenVal(idenVal);
+        } else if (proto.equals("rpc")){
+            path = url.substring(firSplit + 1);
+            mockInfo.setMethod(method);
+        }else {
+            return new BaseResult<Object>(false, "不支持该协议");
+        }
+        mockInfo.setPath(path);
         mockInfo.setProto(proto);
-        mockInfo.setDomain(domain);
         mockInfo.setPath(path);
         mockInfo.setJson(json);
-        mockInfo.setIdenKey(idenKey);
-        mockInfo.setIdenVal(idenVal);
 
+        //判断是否已存在
+        MockInfo isMockExist=null;
         try {
-            MockInfo isMockExist=this.mockService.queryByPath(path);
+            if (proto.equals("rpc")){
+                isMockExist=this.mockService.queryByPath(path);
+            } else {
+                isMockExist=this.mockService.queryByPath(path);
+            }
+
             if(isMockExist == null){
                 mockService.insert(mockInfo);
                 return new BaseResult<Object>(true, "成功添加一条记录！");
@@ -70,42 +90,45 @@ public class MockController {
     @RequestMapping(value = "queryByPath")
     public JSONObject queryByPath(HttpServletRequest request,
             @RequestParam(value = "path", required = false) String path,
+                                  @RequestParam(value = "proto", required = false, defaultValue = "http") String proto,
                                   @RequestParam(value = "mname", required = false) String mname) throws ServletException, IOException {
 
-        //获取传入的参数，里面包含有被mock接口的查询参数
-//        String getQueryString =request.getQueryString();
-//        System.out.println("getQueryString:"+ getQueryString);
-
-//        Enumeration enu=request.getParameterNames();
-//        while(enu.hasMoreElements()){
-//            String paraName=(String)enu.nextElement();
-//            System.out.println(paraName+": "+request.getParameter(paraName));
-//        }
-//        System.out.println(request.getParameter("orderNo"));
-
         JSONObject jsonExpected = new JSONObject();
-
-        //根据被mock接口的uri匹配并返回期望
         MockInfo mockInfo=this.mockService.queryByPath(path);
         String idenKey = mockInfo.getIdenKey();
         String idenVal = mockInfo.getIdenVal();
-        if(!(idenKey == null || "".equals(idenKey))){
-            Enumeration enu=request.getParameterNames();
-            while(enu.hasMoreElements()){
-                String paraName=(String)enu.nextElement();
-                if(paraName.equals(idenKey)){
-                    String reqVal = request.getParameter(paraName);
-                    if(reqVal.equals(idenVal)){
-                        jsonExpected = JSONObject.parseObject(mockInfo.getJson());
+        String methodName = mockInfo.getMethod();
+
+        if (proto.equals("rpc")) {
+            if (!(methodName == null || "".equals(methodName))) {
+                Enumeration enu=request.getParameterNames();
+                while(enu.hasMoreElements()){
+                    String paraName=(String)enu.nextElement();
+                    if(paraName.equals(mname)){
+                        String reqVal = request.getParameter(paraName);
+                        if(reqVal.equals(methodName)){
+                            jsonExpected = JSONObject.parseObject(mockInfo.getJson());
+                        }
                     }
                 }
+                return jsonExpected;
             }
-            return jsonExpected;
+        } else {
+            if (!(idenKey == null || "".equals(idenKey))) {
+                Enumeration enu=request.getParameterNames();
+                while(enu.hasMoreElements()){
+                    String paraName=(String)enu.nextElement();
+                    if(paraName.equals(idenKey)){
+                        String reqVal = request.getParameter(paraName);
+                        if(reqVal.equals(idenVal)){
+                            jsonExpected = JSONObject.parseObject(mockInfo.getJson());
+                        }
+                    }
+                }
+                return jsonExpected;
+            }
         }
-
         jsonExpected = JSONObject.parseObject(mockInfo.getJson());
         return jsonExpected;
-
     }
-
 }

@@ -15,7 +15,7 @@ public interface MockInfoDao {
     @Select(value = "select * from mock_info")
     @Results(value = { @Result(id = true, property = "id", column = "id"), @Result(property = "alias", column = "alias"),
             @Result(property = "proto", column = "proto"), @Result(property = "domain", column = "domain"),
-            @Result(property = "path", column = "path"), @Result(property = "json", column = "json") })
+            @Result(property = "path", column = "path"), @Result(property = "json", column = "json"), @Result(property = "method", column = "method") })
 
     List<MockInfo> query();
 

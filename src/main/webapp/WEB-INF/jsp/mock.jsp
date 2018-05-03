@@ -49,15 +49,22 @@
                                 </div>
                             </div>
                             <div class="col-sm-2">
-                                    <input class="form-control" placeholder="标识字段名称" style="display: block" id="idenKey"/>
+                                    <input class="form-control" placeholder="http标识字段名" style="display: block" id="idenKey"/>
                             </div>
                             <div class="col-sm-2">
-                                    <input class="form-control" placeholder="标识字段值" style="display: block" id="idenVal"/>
+                                    <input class="form-control" placeholder="http标识字段值" style="display: block" id="idenVal"/>
                             </div>
                         </div>
                         <br>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="此处填写想要mock的接口URL" id="url">
+                            <div class="row">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="此处填写想要mock的接口URL(http包含proto+domain+path，dubbo接口以rpc:开头)" id="url">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" placeholder="此处填写dubbo接口的方法名" id="dubboMethod">
+                            </div>
+                            </div>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-primary" id="confirm">确认添加</button>
                             </span>
@@ -213,12 +220,13 @@
         var url = document.getElementById("url").value;
         var idenKey = document.getElementById("idenKey").value;
         var idenVal = document.getElementById("idenVal").value;
+        var dubboMethod = document.getElementById("dubboMethod").value;
         var json = current_json_str;//压缩后的JSON
 
         $.ajax({
             url: "<%=path%>/mock/insert",
             data: {
-                alias: alias, url: url, json: json, idenKey: idenKey, idenVal: idenVal
+                alias: alias, url: url, json: json, idenKey: idenKey, idenVal: idenVal, method: dubboMethod
             },
             type: "post",
             async: false,
@@ -228,7 +236,7 @@
             var json = eval(data);
             var result = json.errorMsg;
             alert(result);
-            window.location.reload();
+//            window.location.reload();
         }
     })
 </script>

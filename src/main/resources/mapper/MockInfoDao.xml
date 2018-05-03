@@ -4,9 +4,9 @@
 
     <insert id="insert">
         INSERT INTO
-        mock_info(id,alias,proto,domain,path,json,idenkey,idenval)
+        mock_info(id,alias,proto,domain,path,json,idenkey,idenval,method)
         VALUES
-        (#{id},#{alias},#{proto},#{domain},#{path},#{json},#{idenkey},#{idenval})
+        (#{id},#{alias},#{proto},#{domain},#{path},#{json},#{idenkey},#{idenval},#{method})
     </insert>
 
     <select id="queryByPath" resultType="com.mock.pojo.MockInfo">
