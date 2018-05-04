@@ -95,20 +95,18 @@ public class MockController {
 
         JSONObject jsonExpected = new JSONObject();
         MockInfo mockInfo=this.mockService.queryByPath(path);
+        if (mockInfo == null ) {
+            return null;
+        }
         String idenKey = mockInfo.getIdenKey();
         String idenVal = mockInfo.getIdenVal();
         String methodName = mockInfo.getMethod();
 
         if (proto.equals("rpc")) {
             if (!(methodName == null || "".equals(methodName))) {
-                Enumeration enu=request.getParameterNames();
-                while(enu.hasMoreElements()){
-                    String paraName=(String)enu.nextElement();
-                    if(paraName.equals(mname)){
-                        String reqVal = request.getParameter(paraName);
-                        if(reqVal.equals(methodName)){
-                            jsonExpected = JSONObject.parseObject(mockInfo.getJson());
-                        }
+                if ( !(mname == null || "".equals(mname))) {
+                    if (methodName.equals(mname)) {
+                        jsonExpected = JSONObject.parseObject(mockInfo.getJson());
                     }
                 }
                 return jsonExpected;
