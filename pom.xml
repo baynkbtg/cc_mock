@@ -287,7 +287,7 @@
   <!-- Build Settings -->
   <!--http://maven.apache.org/pom.html#Build_Settings -->
   <build>
-    <finalName>${project.artifactId}_${project.version}_${maven.build.timestamp}</finalName>
+    <finalName>mock_server</finalName>
     <resources>
       <resource>
         <!--directory: 资源所在的位置 -->
