@@ -244,6 +244,10 @@
           <artifactId>spring-core</artifactId>
           <groupId>org.springframework</groupId>
         </exclusion>
+        <exclusion>
+          <artifactId>spring-tx</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
       </exclusions>
     </dependency>
 
