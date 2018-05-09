@@ -18,7 +18,9 @@ public class PageController {
 
     @RequestMapping(value = "mock")
     public ModelAndView mockPage(){
-        return new ModelAndView("mock",null);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("mock");
+        return modelAndView;
     }
 
     @RequestMapping(value="test", method = {RequestMethod.GET})
