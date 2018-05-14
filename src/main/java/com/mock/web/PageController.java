@@ -11,12 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by qilong.chen on 2018/3/20.
  */
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/page")
 public class PageController {
     @Autowired
     private MockService mockService;
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "mock")
     public ModelAndView mockPage(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("mock");
