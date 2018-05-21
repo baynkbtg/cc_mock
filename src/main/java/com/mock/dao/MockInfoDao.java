@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * Created by qilong.chen on 2017/3/19.
+ * Created by qilong.chen on 2018/3/19.
  */
 public interface MockInfoDao {
     @Select(value = "select * from mock_info")
