@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="GBK"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -6,10 +6,10 @@
          http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--1ã€é…ç½®æ•°æ®åº“ç›¸å…³å‚æ•°-->
+    <!--1¡¢ÅäÖÃÊý¾Ý¿âÏà¹Ø²ÎÊý-->
     <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>
 
-    <!--2.æ•°æ®æºdruid -->
+    <!--2.Êý¾ÝÔ´druid -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -17,33 +17,33 @@
         <property name="username" value="${jdbc.username}" />
         <property name="password" value="${jdbc.password}" />
 
-        <!-- é…ç½®åˆå§‹åŒ–å¤§å°ã€æœ€å°ã€æœ€å¤§ -->
+        <!-- ÅäÖÃ³õÊ¼»¯´óÐ¡¡¢×îÐ¡¡¢×î´ó -->
         <property name="initialSize" value="${druid.pool.size.init}" />
         <property name="minIdle" value="${druid.pool.size.min}" />
         <property name="maxActive" value="${druid.pool.size.max}" />
 
-        <!-- é…ç½®ç›‘æŽ§ç»Ÿè®¡æ‹¦æˆªçš„filtersï¼Œwallç”¨äºŽé˜²æ­¢sqlæ³¨å…¥ï¼Œstatç”¨äºŽç»Ÿè®¡åˆ†æž -->
+        <!-- ÅäÖÃ¼à¿ØÍ³¼ÆÀ¹½ØµÄfilters£¬wallÓÃÓÚ·ÀÖ¹sql×¢Èë£¬statÓÃÓÚÍ³¼Æ·ÖÎö -->
         <property name="filters" value="wall,stat" />
     </bean>
 
 
-    <!--3ã€é…ç½®SqlSessionFactoryå¯¹è±¡-->
+    <!--3¡¢ÅäÖÃSqlSessionFactory¶ÔÏó-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!--æ³¨å…¥æ•°æ®åº“è¿žæŽ¥æ± -->
+        <!--×¢ÈëÊý¾Ý¿âÁ¬½Ó³Ø-->
         <property name="dataSource" ref="dataSource"/>
-        <!--é…ç½®mybatiså…¨å±€é…ç½®æ–‡ä»¶:mybatis-config.xml-->
+        <!--ÅäÖÃmybatisÈ«¾ÖÅäÖÃÎÄ¼þ:mybatis-config.xml-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
-        <!--æ‰«æentityåŒ…,ä½¿ç”¨åˆ«å,å¤šä¸ªç”¨;éš”å¼€-->
+        <!--É¨Ãèentity°ü,Ê¹ÓÃ±ðÃû,¶à¸öÓÃ;¸ô¿ª-->
         <property name="typeAliasesPackage" value="com.mock.pojo"/>
-        <!--æ‰«æsqlé…ç½®æ–‡ä»¶:mapperéœ€è¦çš„xmlæ–‡ä»¶-->
+        <!--É¨ÃèsqlÅäÖÃÎÄ¼þ:mapperÐèÒªµÄxmlÎÄ¼þ-->
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
-    <!--4ã€é…ç½®æ‰«æDaoæŽ¥å£åŒ…,åŠ¨æ€å®žçŽ°DAOæŽ¥å£,æ³¨å…¥åˆ°springå®¹å™¨-->
+    <!--4¡¢ÅäÖÃÉ¨ÃèDao½Ó¿Ú°ü,¶¯Ì¬ÊµÏÖDAO½Ó¿Ú,×¢Èëµ½springÈÝÆ÷-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!--æ³¨å…¥SqlSessionFactory-->
+        <!--×¢ÈëSqlSessionFactory-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <!-- ç»™å‡ºéœ€è¦æ‰«æçš„DaoæŽ¥å£-->
+        <!-- ¸ø³öÐèÒªÉ¨ÃèµÄDao½Ó¿Ú-->
         <property name="basePackage" value="com.mock.dao"/>
     </bean>
 

@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="GBK" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <!--é…ç½®å…¨å±€å±žæ€§-->
+    <!--ÅäÖÃÈ«¾ÖÊôÐÔ-->
     <settings>
-        <!--ä½¿ç”¨jdbcçš„getGeneratekeysèŽ·å–è‡ªå¢žä¸»é”®å€¼-->
+        <!--Ê¹ÓÃjdbcµÄgetGeneratekeys»ñÈ¡×ÔÔöÖ÷¼üÖµ-->
         <setting name="useGeneratedKeys" value="true"/>
-        <!--ä½¿ç”¨åˆ—åˆ«åæ›¿æ¢åˆ«åã€€ã€€é»˜è®¤true-->
+        <!--Ê¹ÓÃÁÐ±ðÃûÌæ»»±ðÃû¡¡¡¡Ä¬ÈÏtrue-->
         <setting name="useColumnLabel" value="true"/>
-        <!--å¼€å¯é©¼å³°å‘½åè½¬æ¢Table:create_timeåˆ° Entity(createTime)-->
+        <!--¿ªÆôÍÕ·åÃüÃû×ª»»Table:create_timeµ½ Entity(createTime)-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
 </configuration>

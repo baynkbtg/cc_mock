@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="GBK"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -12,27 +12,27 @@
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!-- æ¿€æ´»ç»„ä»¶æ‰«æåŠŸèƒ½,æ‰«æaopçš„ç›¸å…³ç»„ä»¶ç»„ä»¶ -->
+    <!-- ¼¤»î×é¼þÉ¨Ãè¹¦ÄÜ,É¨ÃèaopµÄÏà¹Ø×é¼þ×é¼þ -->
     <!--<context:component-scan base-package="com.mock.aop"/>-->
-    <!-- å¯åŠ¨å¯¹@AspectJæ³¨è§£çš„æ”¯æŒ -->
+    <!-- Æô¶¯¶Ô@AspectJ×¢½âµÄÖ§³Ö -->
     <aop:aspectj-autoproxy proxy-target-class="true" />
 
-    <!--ç®€åŒ–é…ç½®:
-    	1ã€è‡ªåŠ¨æ³¨å†ŒDefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
-    	2ã€æä¾›ä¸€ç³»åˆ—:æ•°æ®ç»‘å®š,æ•°å­—å’Œæ—¥æœŸçš„format,@NumberFormat,@DataTimeFormat,xml,jsoné»˜è®¤è¯»å†™æ”¯æŒ
+    <!--¼ò»¯ÅäÖÃ:
+    	1¡¢×Ô¶¯×¢²áDefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+    	2¡¢Ìá¹©Ò»ÏµÁÐ:Êý¾Ý°ó¶¨,Êý×ÖºÍÈÕÆÚµÄformat,@NumberFormat,@DataTimeFormat,xml,jsonÄ¬ÈÏ¶ÁÐ´Ö§³Ö
     -->
     <mvc:annotation-driven/>
 
-    <!--é™æ€èµ„æºé»˜è®¤servleté…ç½®
-    	1ã€åŠ å…¥å¯¹é™æ€èµ„æºçš„å¤„ç†:js,css,gif,png
-    	2ã€å…è®¸ä½¿ç”¨"/"åšæ•´ä½“æ˜ å°„
+    <!--¾²Ì¬×ÊÔ´Ä¬ÈÏservletÅäÖÃ
+    	1¡¢¼ÓÈë¶Ô¾²Ì¬×ÊÔ´µÄ´¦Àí:js,css,gif,png
+    	2¡¢ÔÊÐíÊ¹ÓÃ"/"×öÕûÌåÓ³Éä
 
     -->
     <mvc:default-servlet-handler/>
 
     <mvc:view-controller path="/" view-name="forward:mock"/>
 
-    <!--é…ç½®JSPã€€æ˜¾ç¤ºViewResolver-->
+    <!--ÅäÖÃJSP¡¡ÏÔÊ¾ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
@@ -47,7 +47,7 @@
         </property>
     </bean>
 
-    <!--æ‰«æwebç›¸å…³çš„controller-->
+    <!--É¨ÃèwebÏà¹ØµÄcontroller-->
     <context:component-scan base-package="com.mock.web"/>
 
 </beans>
