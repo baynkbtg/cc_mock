@@ -38,11 +38,11 @@
     </dependency>
     <!-- pagehelper分页插件依赖 -->
     <!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>5.0.4</version>
-    </dependency>
+    <!--<dependency>-->
+    <!--<groupId>com.github.pagehelper</groupId>-->
+    <!--<artifactId>pagehelper</artifactId>-->
+    <!--<version>5.0.4</version>-->
+    <!--</dependency>-->
     <!-- mybatis逆向工程 -->
     <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
     <dependency>
@@ -129,6 +129,11 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.3.2</version>
     </dependency>
   </dependencies>
   <build>
