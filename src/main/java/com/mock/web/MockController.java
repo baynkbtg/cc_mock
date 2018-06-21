@@ -59,7 +59,7 @@ public class MockController {
             path = url.substring(firSplit + 1);
             mockInfo.setMethod(method);
         }else {
-            return new BaseResult<Object>(false, "不支持该协议");
+            return new BaseResult<Object>(false, "不支持该协议！");
         }
         mockInfo.setPath(path);
         mockInfo.setProto(proto);
